@@ -41,6 +41,11 @@ main aside {
   margin: 1rem;
 }
 
+.modList {
+  display: grid;
+  gap: 1em;
+}
+
 .mod {
   display: grid;
   grid-template-columns: 1fr auto;

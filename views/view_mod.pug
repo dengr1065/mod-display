@@ -1,6 +1,11 @@
 extends base.pug
 
 block head
+  meta(property="og:title", content=mod.name)
+  meta(property="og:description", content=mod.description)
+  if mod.screenshots.length > 0
+    meta(name="twitter:card", content="summary_large_image")
+    meta(property="og:image", content=`/api/screenshot/${mod.id}/0`)
   link(rel="stylesheet", href="/assets/view_mod.css")
 
 block body
@@ -12,7 +17,7 @@ block body
         .buttonBar
           a(href=bestVersion.downloadURL)
             button.download= versionText
-          a(href=bestVersion.installURL,title="Install")
+          a(href=bestVersion.installURL, title="Install")
             button.install.icon
   p.description= mod.description
   .readme!= mod.readmeHTML
@@ -27,7 +32,7 @@ mixin modVersion(version)
     .size= version.formattedSize
     .released Released 
       = date
-    a.install(href=version.installURL,title="Install")
+    a.install(href=version.installURL, title="Install")
       button.install.icon
 
 block sidebar
@@ -44,5 +49,5 @@ block sidebar
       .screenshots
         - for (let i = 0; i < mod.screenshots.length; i++)
           - const screenshotURL = `/api/screenshot/${mod.id}/${i}`;
-          a(href=screenshotURL,target="_blank")
+          a(href=screenshotURL, target="_blank")
             img(src=screenshotURL)

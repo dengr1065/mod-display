@@ -31,5 +31,6 @@ block body
     h2#modlist My mods
     .sort Sort by: 
       +sortButtons()
-  - for (const mod of mods)
-    +displayMod(mod)
+  .modList
+    - for (const mod of mods)
+      +displayMod(mod)
