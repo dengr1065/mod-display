@@ -1,0 +1,48 @@
+extends base.pug
+
+block head
+  link(rel="stylesheet", href="/assets/view_mod.css")
+
+block body
+  .double
+    h1= mod.name
+    if bestVersion
+      - const versionText = `${bestVersion} (${bestVersion.formattedSize})`;
+      div
+        .buttonBar
+          a(href=bestVersion.downloadURL)
+            button.download= versionText
+          a(href=bestVersion.installURL,title="Install")
+            button.install.icon
+  p.description= mod.description
+  .readme!= mod.readmeHTML
+
+mixin modVersion(version)
+  - const timeFormat = new Intl.RelativeTimeFormat("en-US", { numeric: "auto" });
+  - const daysSince = Math.round((Date.now() - version.released.getTime()) / 86400e3);
+  - const fullDate = version.released.toLocaleDateString("en-US", { timeZone: "UTC" });
+  - const date = daysSince > 7 ? fullDate : timeFormat.format(-daysSince, "days");
+  div(class=`version ${bestVersion == version ? "best" : ""}`)
+    a(href=version.downloadURL)= version
+    .size= version.formattedSize
+    .released Released 
+      = date
+    a.install(href=version.installURL,title="Install")
+      button.install.icon
+
+block sidebar
+  .block.versionList
+    .title Mod Versions
+    if mod.versions.length > 0
+      - for (const version of mod.versions)
+        +modVersion(version)
+    else
+      .noVersion This mod doesn't have any versions yet.
+  if mod.screenshots.length > 0
+    .block
+      .title Screenshots
+      .screenshots
+        - for (let i = 0; i < mod.screenshots.length; i++)
+          - const screenshotURL = `/api/screenshot/${mod.id}/${i}`;
+          a(href=screenshotURL,target="_blank")
+            img(src=screenshotURL)

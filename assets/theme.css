@@ -1,0 +1,103 @@
+:root {
+  --accent: #af8806;
+  --success: #1ee93928;
+  --text: #2e2e2e;
+  --text-inverse: #f2f2f2;
+  --hover: #af880615;
+  --pressed: #af880630;
+  --border: #00000020;
+  --rounding: 0.3rem;
+  color-scheme: light dark;
+  accent-color: var(--accent);
+
+  font-family: "Ubuntu", system-ui;
+}
+
+body {
+  margin: 0;
+  user-select: none;
+  background: #f9f9fd;
+  color: var(--text);
+}
+
+button {
+  all: unset;
+}
+
+a,
+button {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover:not(.button) {
+  text-decoration: underline;
+}
+
+button {
+  padding: 0.3em 0.6em;
+  border: 1px solid var(--accent);
+  border-radius: var(--rounding);
+  text-align: start;
+  transition: 0.15s background-color;
+}
+
+button:hover {
+  background-color: var(--hover);
+}
+
+button:active {
+  background-color: var(--pressed);
+}
+
+button.selected {
+  background-color: var(--pressed);
+}
+
+h1,
+h2 {
+  margin: 0;
+}
+
+.double {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  margin-block: 0.5em;
+  align-items: center;
+}
+
+.buttonBar {
+  display: inline-flex;
+}
+
+.buttonBar button {
+  border-radius: 0;
+  border-left: none;
+}
+
+.buttonBar > :first-child button {
+  border-top-left-radius: var(--rounding);
+  border-bottom-left-radius: var(--rounding);
+  border-left: 1px solid var(--accent);
+}
+
+.buttonBar > :last-child button {
+  border-top-right-radius: var(--rounding);
+  border-bottom-right-radius: var(--rounding);
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #303436;
+  }
+
+  :root {
+    --accent: #fdd245;
+    --success: #18792534;
+    --text: #f2f2f2;
+    --text-inverse: #2e2e2e;
+    --hover: #ffffff20;
+    --pressed: #fdd24530;
+    --border: #ffffff20;
+  }
+}

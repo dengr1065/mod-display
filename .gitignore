@@ -1,0 +1,4 @@
+node_modules/
+dist/
+mods/
+config.json

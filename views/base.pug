@@ -1,0 +1,28 @@
+//- Basic layout for all pages
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="shortcut icon", href="/assets/icon.png", type="image/png")
+    link(rel="stylesheet", href="/assets/styles.css")
+    title
+      block title
+        |dengr's mods
+    block head
+  body
+    header
+      a.logo(href="/") dengr's mods
+      a(href="//github.com/dengr1065/shapez.io-mods") Source code
+    main(class=(target || ""))
+      .content
+        block body
+      if target && target.split(/\s+/).includes("sidebar")
+        aside
+          block sidebar
+    footer
+      |DISCLAIMER:
+      br
+      |Mods on this webiste are distributed in the hope that they will
+      |be useful, but without any warranty. I am not responsible for
+      |broken savegames, loss of any kind of data, or any other errors.

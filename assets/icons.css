@@ -1,0 +1,52 @@
+button.download,
+button.install,
+button.sort-new,
+button.sort-alpha {
+  padding-left: 1.8em;
+  background-size: 1.2em;
+  background-repeat: no-repeat;
+  background-position: 0.35em 50%;
+  background-image: var(--button-icon);
+}
+
+button.download {
+  --button-icon: url("/assets/icons/download.svg");
+  background-color: var(--accent);
+  color: var(--text-inverse);
+}
+
+button.install {
+  --button-icon: url("/assets/icons/install.svg");
+}
+
+button.sort-new {
+  --button-icon: url("/assets/icons/sort_new.svg");
+}
+
+button.sort-alpha {
+  --button-icon: url("/assets/icons/sort_alpha.svg");
+}
+
+button.icon {
+  height: 1.875em;
+  padding-right: 0.1em;
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+  button.download {
+    --button-icon: url("/assets/icons/download_dark.svg");
+  }
+
+  button.install {
+    --button-icon: url("/assets/icons/install_dark.svg");
+  }
+
+  button.sort-new {
+    --button-icon: url("/assets/icons/sort_new_dark.svg");
+  }
+
+  button.sort-alpha {
+    --button-icon: url("/assets/icons/sort_alpha_dark.svg");
+  }
+}

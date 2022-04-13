@@ -1,0 +1,35 @@
+extends base.pug
+
+mixin displayMod(mod)
+  - const version = mod.getBestVersion();
+  - const versionText = `${version} (${version.formattedSize})`;
+  - const lastUpdated = mod.lastUpdated.toLocaleString("en-US", {timeZone: "UTC"});
+  .mod
+    div
+      .name= mod.name
+        span= versionText
+      .description= mod.description
+      a(href=`/view/${mod.id}`) View mod page
+      span= `Last updated: ${lastUpdated} (UTC)`
+    .version
+      if (version)
+        a.button(href=mod.downloadURL)
+          button.download Latest version
+        a.button(href=mod.installURL)
+          button.install Install
+
+mixin sortButtons
+  - const methodNames = { new: "Last updated", alpha: "Name (A-Z)" };
+  .buttonBar
+    - for (const method of ["new", "alpha"])
+      - const selClass = method == sortMethod ? " selected" : "";
+      a.button(href=`/?sort=${method}`)
+        button(class=`sort-${method}${selClass}`)= methodNames[method]
+
+block body
+  .double
+    h2#modlist My mods
+    .sort Sort by: 
+      +sortButtons()
+  - for (const mod of mods)
+    +displayMod(mod)
