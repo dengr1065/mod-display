@@ -38,11 +38,11 @@ route.get("/", (req, res) => {
       return isNaN(result) ? 0 : result;
     }
 
-    if (b.name < a.name) {
+    if (a.name < b.name) {
       return -1;
     }
 
-    return b.name > a.name ? 1 : 0;
+    return a.name > b.name ? 1 : 0;
   });
 
   res.locals.sortMethod = sortMethod;
