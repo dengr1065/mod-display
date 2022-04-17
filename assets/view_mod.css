@@ -1,5 +1,6 @@
 .viewMod .description {
   font-size: 110%;
+  user-select: text;
 }
 
 .versionList .version {

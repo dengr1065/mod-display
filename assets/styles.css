@@ -62,6 +62,7 @@ main aside {
 
 .mod .description {
   margin-block: 0.2em;
+  user-select: text;
 }
 
 .mod span {
