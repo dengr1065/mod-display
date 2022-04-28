@@ -39,13 +39,12 @@ route.get("/manifest/:mod/:range?", useMod, useRange, (req, res) => {
     return;
   }
 
-  const endpoint = `/download/${req.mod!.id}/${req.bestVersion.number}`;
   res.send({
     name: req.mod!.name,
     description: req.mod!.description,
     authors: config!.defaultAuthors,
     version: req.bestVersion.number,
-    url: new URL(endpoint, config!.publicHost).href
+    url: req.bestVersion.downloadURL.href
   });
 });
 

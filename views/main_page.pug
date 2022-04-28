@@ -2,12 +2,13 @@ extends base.pug
 
 mixin displayMod(mod)
   - const version = mod.getBestVersion();
-  - const versionText = `${version} (${version.formattedSize})`;
+  - const versionText = `${version} (${version?.formattedSize})`;
   - const lastUpdated = mod.lastUpdated.toLocaleString("en-US", {timeZone: "UTC"});
   .mod
     div
       .name= mod.name
-        span= versionText
+        if (version)
+          span= versionText
       .description= mod.description
       a(href=`/view/${mod.id}`) View mod page
       span= `Last updated: ${lastUpdated} (UTC)`
