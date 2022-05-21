@@ -48,12 +48,16 @@ main aside {
 
 .mod {
   display: grid;
-  grid-template-columns: 1fr auto auto;
+  grid-template-columns: 1fr auto;
   gap: 0.8em;
   color: var(--text);
   border: 1px solid var(--border);
   border-radius: var(--rounding);
   padding: 0.8em;
+}
+
+.mod.withUnstable {
+  grid-template-columns: 1fr auto auto;
 }
 
 .mod .name {

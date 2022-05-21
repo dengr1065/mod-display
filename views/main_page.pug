@@ -4,7 +4,8 @@ mixin displayMod(mod)
   - const version = mod.getBestVersion();
   - const versionText = `${version} (${version?.formattedSize})`;
   - const lastUpdated = mod.lastUpdated?.toLocaleString("en-US", {timeZone: "UTC"});
-  .mod
+  - const hasUnstable = mod.versions.length > 0 && version !== mod.versions[0];
+  div(class=`mod${hasUnstable ? " withUnstable" : ""}`)
     div
       .name= mod.name
         if (version)
@@ -12,7 +13,7 @@ mixin displayMod(mod)
       .description= mod.description
       a(href=`/view/${mod.id}`) View mod page
       span= `Last updated: ${lastUpdated ? lastUpdated + " (UTC)" : "never"}`
-    if (mod.versions.length > 0 && version !== mod.versions[0])
+    if (hasUnstable)
       .version.unstable
         a.button(href=mod.versions[0].downloadURL)
           button.download.alternative Unstable
