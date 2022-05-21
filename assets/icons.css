@@ -11,12 +11,16 @@ button.sort-alpha {
 
 button.download {
   --button-icon: url("/assets/icons/download.svg");
-  background-color: var(--accent);
+  background-color: var(--button-color);
   color: var(--text-inverse);
 }
 
 button.install {
   --button-icon: url("/assets/icons/install.svg");
+}
+
+button.install.alternative {
+  --button-icon: url("/assets/icons/install_alt.svg");
 }
 
 button.sort-new {
@@ -40,6 +44,10 @@ button.icon {
 
   button.install {
     --button-icon: url("/assets/icons/install_dark.svg");
+  }
+
+  button.install.alternative {
+    --button-icon: url("/assets/icons/install_alt_dark.svg");
   }
 
   button.sort-new {

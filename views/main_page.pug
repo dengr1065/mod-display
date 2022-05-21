@@ -3,7 +3,7 @@ extends base.pug
 mixin displayMod(mod)
   - const version = mod.getBestVersion();
   - const versionText = `${version} (${version?.formattedSize})`;
-  - const lastUpdated = mod.lastUpdated.toLocaleString("en-US", {timeZone: "UTC"});
+  - const lastUpdated = mod.lastUpdated?.toLocaleString("en-US", {timeZone: "UTC"});
   .mod
     div
       .name= mod.name
@@ -11,11 +11,17 @@ mixin displayMod(mod)
           span= versionText
       .description= mod.description
       a(href=`/view/${mod.id}`) View mod page
-      span= `Last updated: ${lastUpdated} (UTC)`
-    .version
-      if (version)
+      span= `Last updated: ${lastUpdated ? lastUpdated + " (UTC)" : "never"}`
+    if (mod.versions.length > 0 && version !== mod.versions[0])
+      .version.unstable
+        a.button(href=mod.versions[0].downloadURL)
+          button.download.alternative Unstable
+        a.button(href=mod.versions[0].installURL)
+          button.install.alternative Install
+    if (version)
+      .version
         a.button(href=mod.downloadURL)
-          button.download Latest version
+          button.download Release
         a.button(href=mod.installURL)
           button.install Install
 

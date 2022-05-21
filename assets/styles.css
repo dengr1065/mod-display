@@ -48,7 +48,8 @@ main aside {
 
 .mod {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr auto auto;
+  gap: 0.8em;
   color: var(--text);
   border: 1px solid var(--border);
   border-radius: var(--rounding);
@@ -105,6 +106,7 @@ aside .block .title {
 
 footer {
   margin: 0 auto;
+  margin-bottom: 0.5em;
   padding: 0 1em;
   max-width: 35em;
   text-align: center;

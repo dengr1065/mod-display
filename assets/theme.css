@@ -1,5 +1,21 @@
+@font-face {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Ubuntu"), url("/assets/fonts/ubuntu-400.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Ubuntu Bold"),
+    url("/assets/fonts/ubuntu-700.woff2") format("woff2");
+}
+
 :root {
   --accent: #af8806;
+  --alternative: #378147;
   --success: #1ee93928;
   --text: #2e2e2e;
   --text-inverse: #f2f2f2;
@@ -35,8 +51,10 @@ a:hover:not(.button) {
 }
 
 button {
+  --button-color: var(--accent);
+  color: var(--button-color);
   padding: 0.3em 0.6em;
-  border: 1px solid var(--accent);
+  border: 1px solid var(--button-color);
   border-radius: var(--rounding);
   text-align: start;
   transition: 0.15s background-color;
@@ -52,6 +70,10 @@ button:active {
 
 button.selected {
   background-color: var(--pressed);
+}
+
+button.alternative {
+  --button-color: var(--alternative);
 }
 
 h1,
@@ -78,7 +100,7 @@ h2 {
 .buttonBar > :first-child button {
   border-top-left-radius: var(--rounding);
   border-bottom-left-radius: var(--rounding);
-  border-left: 1px solid var(--accent);
+  border-left: 1px solid var(--button-color);
 }
 
 .buttonBar > :last-child button {
@@ -93,6 +115,7 @@ h2 {
 
   :root {
     --accent: #fdd245;
+    --alternative: #5fe05b;
     --success: #18792534;
     --text: #f2f2f2;
     --text-inverse: #2e2e2e;
